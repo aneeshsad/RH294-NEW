@@ -9,7 +9,7 @@
     - name: Ensure needed content is present
       notify: Ensure server is rebooted
       ansible.builtin.copy:
-        content: Restart
+        content: This is for the test for handler
         dest: /var/tmp/reboot
     
     - name: Ensure software updated
@@ -25,7 +25,6 @@
       ansible.builtin.meta: flush_handlers
     
     - name: Ensure that we can connect to server
-      listen: Reboot server
       ansible.builtin.wait_for:
         port: 22
         delay: 5

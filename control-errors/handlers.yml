@@ -18,16 +18,16 @@
     - name: Deliberately fail
       ignore_errors: false
       ansible.builtin.fail:
-
-  handlers:
-
-    - name: Ensure server is rebooted
-      listen: Reboot server
-      ansible.builtin.reboot:
+    
 
     - name: Ensure that we can connect to server
-      listen: Reboot server
       ansible.builtin.wait_for:
         port: 22
         delay: 5
         timeout: 20 
+
+  handlers:
+
+    - name: Ensure server is rebooted
+      ansible.builtin.reboot:
+
