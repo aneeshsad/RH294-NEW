@@ -1,0 +1,15 @@
+- name: register and debug demo
+  hosts: localhost
+  gather_facts: false
+  become: false
+
+  tasks:
+
+    - name: Ensure directory properties are obtained
+      register: properties
+      ansible.builtin.stat:
+        path: "{{ my_dir | default('/var/tmp/foo/bar/baz/bongle') }}"
+
+    - name: Assert that directory is in fact a directory
+      ansible.builtin.assert:
+        that: "'directory' in properties['stat']['mimetype']"

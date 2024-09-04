@@ -1,0 +1,27 @@
+---
+- name: Variables demonstration
+  hosts: rhel
+  become: false
+  gather_facts: false
+  vars:
+    my_color: purple
+  tasks:
+
+    - name: Ensure set fact controller
+      ansible.builtin.set_fact:
+        my_color: pink
+
+    - name: Ensure the variables are included
+      ansible.builtin.include_vars:
+        file: my_include_var.yml
+
+    - name: Print the value of my_color
+      vars:
+        my_color: orange
+      ansible.builtin.debug:
+        msg: The value of the variable my_color is {{ my_color }}
+    
+
+    - name: Print the value of my_color
+      ansible.builtin.debug:
+        msg: The value of the variable my_color is {{ my_color }}

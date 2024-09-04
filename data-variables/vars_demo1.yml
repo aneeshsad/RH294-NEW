@@ -1,0 +1,10 @@
+---
+- name: Variables demonstration
+  hosts: rhel
+  become: false
+  gather_facts: false
+  tasks:
+
+    - name: Print the value of my_color
+      ansible.builtin.debug:
+        msg: The value of the variable my_color is {{ my_color }}

@@ -1,0 +1,9 @@
+[myself]
+workstation.lab.example.com
+[intranetweb]
+servera.lab.example.com
+[internetweb]
+serverb.lab.example.com
+[web:children]
+intranetweb
+internetweb

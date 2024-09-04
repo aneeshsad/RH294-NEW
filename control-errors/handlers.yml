@@ -1,0 +1,33 @@
+- name: Handler demonstration
+  hosts: "{{ my_host | default('servera') }}"
+  become: true
+  gather_facts: true
+  force_handlers: true
+
+  tasks:
+
+    - name: Ensure needed content is present
+      notify: Reboot server
+      ansible.builtin.copy:
+        content: Restart
+        dest: /var/tmp/reboot
+
+    - name: Execute handlers now without any delay
+      meta: flush_handlers
+
+    - name: Deliberately fail
+      ignore_errors: false
+      ansible.builtin.fail:
+
+  handlers:
+
+    - name: Ensure server is rebooted
+      listen: Reboot server
+      ansible.builtin.reboot:
+
+    - name: Ensure that we can connect to server
+      listen: Reboot server
+      ansible.builtin.wait_for:
+        port: 22
+        delay: 5
+        timeout: 20 

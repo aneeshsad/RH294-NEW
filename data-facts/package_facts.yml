@@ -1,0 +1,14 @@
+---
+- name : package facts demo
+  hosts: servera.lab.example.com
+  become: true
+  gather_facts: true
+
+  tasks:
+
+    - name: Ensure package facs gathered
+      ansible.builtin.package_facts:
+
+    - name: Display packages faces
+      ansible.builtin.debug:
+        var: ansible_facts['packages']
