@@ -1,0 +1,10 @@
+---
+- name: playbook to replace the content
+  hosts: servera.lab.example.com
+  
+  tasks:
+    - name: replace the file content
+      replace:
+        path: /var/testfile
+        regexp: "automation tool"
+        replace: "orchestration tool"

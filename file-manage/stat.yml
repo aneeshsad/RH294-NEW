@@ -1,0 +1,13 @@
+---
+- name: this playbook to check the status of the file 
+  hosts: servera.lab.example.com
+  
+  tasks:
+    - name: this is to check the status of the file
+      ansible.builtin.stat:
+        path: /var/testfile
+        register: file_output
+    
+    - name: this is to dispalay status
+      ansible.builtin.debug:
+        var: file_output

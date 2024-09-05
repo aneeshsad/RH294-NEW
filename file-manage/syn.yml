@@ -1,0 +1,11 @@
+---
+- name: Use the fetch module to retrieve secure log files
+  hosts: servera.lab.example.com
+  remote_user: root
+  
+  tasks:
+   
+    - name: Copy a file to managed hosts and set attributes
+      ansible.posix.synchronize:
+        src: test.txt
+        dest: /home/devops/test.txt
