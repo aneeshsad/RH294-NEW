@@ -6,7 +6,7 @@
     - name: this is to check the status of the file
       ansible.builtin.stat:
         path: /var/testfile
-        register: file_output
+      register: file_output
     
     - name: this is to dispalay status
       ansible.builtin.debug:

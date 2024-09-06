@@ -4,7 +4,7 @@
   
   tasks:
     - name: replace the file content
-      replace:
+      ansible.builtin.replace:
         path: /var/testfile
         regexp: "automation tool"
         replace: "orchestration tool"

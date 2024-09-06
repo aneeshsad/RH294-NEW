@@ -1,6 +1,6 @@
 ---
 - name: Using the file module to ensure SELinux file context
-  hosts: all
+  hosts: serverb.lab.example.com
   remote_user: root
   tasks:
     
