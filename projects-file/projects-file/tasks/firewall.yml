@@ -1,0 +1,8 @@
+---
+- name: "Allow service in firewall"
+  firewalld:
+    service: "{{ firewall }}"
+    state: enabled
+    immediate: true
+    permanent: true
+...    

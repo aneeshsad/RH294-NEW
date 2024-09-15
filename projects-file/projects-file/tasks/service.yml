@@ -1,0 +1,7 @@
+---
+- name: "Enable & Start the service"
+  service:
+    name: "{{ srv }}"
+    state: started
+    enabled: true
+...

@@ -1,0 +1,6 @@
+---
+pkg: httpd
+srv: httpd
+firewall: http
+webpage: /var/www/html/index.html
+...

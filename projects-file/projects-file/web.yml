@@ -1,0 +1,18 @@
+---
+- hosts: servera.lab.example.com
+  tasks:
+  - include_vars: ./tasks/variables.yml
+  - import_tasks: ./tasks/package.yml
+  - import_tasks: ./tasks/service.yml
+  - import_tasks: ./tasks/firewall.yml
+  - import_tasks: ./tasks/webpage.yml
+  
+  handlers:  
+  - name: "Restart the service"
+    service:
+      name: httpd
+      state: restarted
+
+- import_playbook: ./plays/lineinfile.yml
+- import_playbook: ./plays/copy.yml
+...      

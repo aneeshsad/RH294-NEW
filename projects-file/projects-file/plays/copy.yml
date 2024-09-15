@@ -1,0 +1,15 @@
+---
+- hosts: all
+  tasks:
+  - copy:
+      dest: /var/precheck.txt
+      content: |
+         Hostname: {{ ansible_fqdn }}
+         IP Address: {{ ansible_default_ipv4.address }}
+         Free Memory: {{ ansible_memfree_mb }}
+         Kernel: {{ ansible_kernel }}
+  - fetch:
+      src: /var/precheck.txt
+      dest: /home/student/{{ ansible_hostname }}_precheck.txt
+      flat: yes
+...     

@@ -1,15 +1,12 @@
 ---
 - name: Configure web server
   hosts: servera.lab.example.com
-  
   tasks:
-    
     - name: Include the environment task file and set the variables
       include_tasks: tasks/environment.yml
       vars:
         package: httpd
         service: httpd
-    
     - name: Import the firewall task file and set the variables
       import_tasks: tasks/firewall.yml
       vars:
@@ -18,12 +15,10 @@
         rule:
           - http
           - https
-    
     - name: Import the placeholder task file and set the variable
       import_tasks: tasks/placeholder.yml
       vars:
         file: /var/www/html/index.html
-    
 - name: Import test play file and set the variable
   import_playbook: plays/test.yml
   vars:

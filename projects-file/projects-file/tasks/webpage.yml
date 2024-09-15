@@ -1,0 +1,7 @@
+---
+- name: "Edit the webpage"
+  copy:
+    dest: "{{ webpage }}"
+    content: "Simple Webpage.\n"
+  notify: "Restart the service"
+... 
