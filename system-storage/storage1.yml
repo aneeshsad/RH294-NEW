@@ -1,0 +1,26 @@
+---
+- hosts: servera.lab.example.com
+  tasks:
+  - parted:
+      device: /dev/vdb
+      number: 1
+      part_end: 1GB
+      state: present
+  - lvg:
+      vg: testvg
+      pvs: /dev/vdb1
+      pesize: '4'
+  - lvol:
+      vg: testvg
+      lv: testlv
+      size: 500m
+  - filesystem:
+      fstype: ext4
+      dev: /dev/testvg/testlv
+  - mount:
+      path: /mnt
+      src: /dev/testvg/testlv
+      fstype: ext4
+      opts: defaults
+      state: mounted
+...      
